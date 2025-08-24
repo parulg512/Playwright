@@ -1,6 +1,5 @@
-import {test} from 'playwright/test';
-import { NavigationPage } from 'pages/navigation.page';
-import { formLayoutPage } from 'pages/formLayouts.page'
+
+import {test} from '../../fixtures/myfixture.fixture';
 
 //Use Absolute Paths (Optional but Clean)
 // I have configured TypeScript or Node.js to use absolute paths, which avoids this problem altogether.
@@ -28,14 +27,21 @@ test.beforeEach(async({page}) =>
   await page.goto("http://localhost:4200/pages/iot-dashboard")
 });
 
-
-test('filling the form', async({page}) =>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+test('Naivagation to form page',async({page, navigationPage})=>
 {
-      const navigateTo= new NavigationPage(page);
-      const onFormLayouts =new formLayoutPage(page);
-      await navigateTo.formLayoutPage();
-      await onFormLayouts.submitUsingtheGridform("testuser@test.com", "secret123","Option 1")
-      await onFormLayouts.submitInLine("firstname lastname","firstname_lastname@test.com", true)    
+  await navigationPage.formLayoutPage();
+  await navigationPage.datePickerPage();
+  await navigationPage.Smarttable();
+
+})
+
+test('filling the form', async({formLayoutPage,navigationPage}) =>
+{
+     
+      await navigationPage.formLayoutPage();
+      await formLayoutPage.submitUsingtheGridform("testuser@test.com", "secret123", "Option 1")
+      await formLayoutPage.submitInLine("firstname lastname","firstname_lastname@test.com", true)    
     // await navigateTo.datePickerPage();
     // await navigateTo.Smarttable();
   

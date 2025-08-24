@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Locator, type Page  } from "@playwright/test";
 
-export class formLayoutPage{
+export class FormLayoutPage{
 
     readonly page: Page
 
