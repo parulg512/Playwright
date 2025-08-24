@@ -9,7 +9,9 @@
     "codegen": "npx playwright codegen",
     "chromium": "npx playwright test --project=chromium --headed",
     "ui": "npx playwright test --ui",
-    "show-report": "npx playwright show-report"
+    "show-report": "npx playwright show-report",
+    "prod": "playwright test --config=playwright-prod.config.ts",
+    "local": "ENV=local npx playwright test"
   },
   "keywords": [],
   "author": "",
